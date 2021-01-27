@@ -17,7 +17,7 @@ while offset < lim:
         first_release_date, aggregated_rating, rating, total_rating, 
         rating_count, total_rating_count;
         \r\nlimit 500;\r\noffset {offset};
-        \r\nsort id desc;
+        \r\nsort id;
         """
     headers = {
     'Client-ID': '**',
