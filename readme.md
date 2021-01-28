@@ -8,21 +8,14 @@ interface with each other.
 
 ## Project Summary
 
-<ul>
-<li>
-Created Python scripts to insert data obtained via [IGDB’s
+* Created Python scripts to insert data obtained via [IGDB’s
 API](https://api-docs.igdb.com/) into a PostgreSQL database of videogame
 data
-</li>
-<li>
-Gained insight as to how to create relational databases with multiple
+* Gained insight as to how to create relational databases with multiple
 tables and generated SQL queries calling multiple tables at once
-</li>
-<li>
-Employed R to data scrape [VGChartz](https://www.vgchartz.com/) and
+* Employed R to data scrape [VGChartz](https://www.vgchartz.com/) and
 collect sales data about top rated video games
-</li>
-</ul>
+
 
 ## Data acquisition and database creation
 
@@ -234,7 +227,7 @@ This project taught me how relational databases in SQL are created and
 how important it is to create proper foreign key references and have
 data normalization. My database does not have normalization, but
 restructuring the data entry step in Python would allow for me to create
-a normalized schema in the future.I was able to develop my data scraping
+a normalized schema in the future. I was able to develop my data scraping
 skills for obtaining data not already stored in databases by using R.
 Lastly, I learned that it is relatively easy to leverage all tools
 available in different languages like R and Python to meet project
