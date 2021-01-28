@@ -2,22 +2,21 @@ library(RPostgreSQL)
 library(rvest)
 library(tidyverse)
 
-confidential <- c()
-confidential$user = "postgres"
-confidential$password = "1337"
-
+#connect to the PostgreSQL database, then import the data
 driver <- dbDriver("PostgreSQL")
 con <- dbConnect(driver, dbname = "games", user = confidential$user, password = confidential$password, port = "5433")
-games <- dbGetQuery(con, "select * from games where critic_rating > 80 and user_rating > 80 and critic_rating is not null order by total_rating desc;")
+games <- dbGetQuery(con, "select * from games where critic_rating > 80 and user_rating > 80 order by total_rating desc;")
 
+#transform data to have + instead of space, used for URL searching
 game_names <- games %>% transmute(name = str_replace_all(name, "[:blank:]", "+")) %>%
   mutate(name = str_remove_all(name, "[:punct:]")) %>% 
   as.data.frame()
 
+#URL for searching game info
 base_url <- "https://www.vgchartz.com/gamedb/games.php?name="
 
+#create list of URLs by using the game names vector
 urls <- c()
-
 for (i in 1:nrow(game_names)) {
   urls[i] <- str_glue({base_url}, {game_names[i,1]})
 }
@@ -114,7 +113,7 @@ vg_data <- function(url) {
 }
 
 
-sales_data <- list()
+sales <- list()
 
 #do a for loop over the list of URLs to store the sales data into a list
 #print i to show which number the iteration is on, along with a 15 second pause
